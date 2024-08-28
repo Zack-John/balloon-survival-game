@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6h6hbpaeje6d"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_bckxo"]
+[ext_resource type="Texture2D" uid="uid://b40ykwmg7qc6g" path="res://assets/background.png" id="1_ubeyb"]
+[ext_resource type="PackedScene" uid="uid://by6sif0vrldtu" path="res://balloon.tscn" id="2_5lfi8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kb2ev"]
+size = Vector2(48, 201)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjw7l"]
+size = Vector2(328, 26.75)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ebgp"]
+line_spacing = 0.0
+font_size = 8
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_bckxo")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_ubeyb")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(24, 89.5)
+shape = SubResource("RectangleShape2D_kb2ev")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(296, 90)
+shape = SubResource("RectangleShape2D_kb2ev")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+position = Vector2(159, -11.625)
+shape = SubResource("RectangleShape2D_rjw7l")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
+position = Vector2(159, 191)
+shape = SubResource("RectangleShape2D_rjw7l")
+
+[node name="Balloon" parent="." instance=ExtResource("2_5lfi8")]
+position = Vector2(160, 88)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="SawCountLabel" type="Label" parent="."]
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 29.0
+text = "Blades
+0"
+label_settings = SubResource("LabelSettings_5ebgp")
+horizontal_alignment = 1
+vertical_alignment = 1

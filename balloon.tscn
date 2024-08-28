@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://by6sif0vrldtu"]
+
+[ext_resource type="Texture2D" uid="uid://dvvcp7x1q54t" path="res://assets/balloon.png" id="1_7tvxh"]
+[ext_resource type="Script" path="res://balloon.gd" id="1_g3hng"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvdwf"]
+radius = 5.0
+height = 12.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_df0tt"]
+radius = 4.0
+height = 10.0
+
+[node name="Balloon" type="CharacterBody2D"]
+collision_layer = 0
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_g3hng")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7tvxh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_lvdwf")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+z_index = 10
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CapsuleShape2D_df0tt")
+debug_color = Color(0.980258, 0, 0.381196, 0.42)

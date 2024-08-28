@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc7npgvle3yn0"]
+
+[ext_resource type="Script" path="res://SawbladeTelegraph.gd" id="1_nt604"]
+[ext_resource type="Texture2D" uid="uid://q6tojc8wshab" path="res://assets/saw_blade_telegraph.png" id="2_ss7qs"]
+[ext_resource type="Texture2D" uid="uid://bm7cuvw0dg4n5" path="res://assets/arrow.png" id="3_8oi45"]
+
+[node name="SawbladeTelegraph" type="Node2D"]
+script = ExtResource("1_nt604")
+
+[node name="Blade" type="Sprite2D" parent="."]
+texture = ExtResource("2_ss7qs")
+
+[node name="ArrowSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_8oi45")
+offset = Vector2(16, 0)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
